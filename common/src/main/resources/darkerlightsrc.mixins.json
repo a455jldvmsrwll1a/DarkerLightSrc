@@ -4,7 +4,9 @@
   "package": "ph.jldvmsrwll1a.darkerlightsrc.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
-  "mixins": [],
+  "mixins": [
+    "light_level.BlockStateBaseMixin"
+  ],
   "client": [],
   "server": [],
   "injectors": {

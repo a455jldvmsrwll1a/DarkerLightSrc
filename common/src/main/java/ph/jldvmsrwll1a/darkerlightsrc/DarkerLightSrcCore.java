@@ -4,7 +4,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Items;
 import ph.jldvmsrwll1a.darkerlightsrc.platform.Services;
 
-public class DarkerLightSrcCore {
+public final class DarkerLightSrcCore {
+
+    public static BlockLightLevels BLOCK_LIGHT_LEVELS;
 
     public static void init() {
         Constants.LOG.info(
@@ -16,5 +18,7 @@ public class DarkerLightSrcCore {
         if (Services.PLATFORM.isModLoaded("darkerlightsrc")) {
             Constants.LOG.info("Hello to darkerlightsrc");
         }
+
+        BLOCK_LIGHT_LEVELS = new BlockLightLevels();
     }
 }
