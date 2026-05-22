@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 public final class DefaultLevels {
 
     public static final int PASSTHROUGH = -1;
-    public static final int DEFAULT_LEVEL = 8;
+    public static final int DEFAULT_LEVEL = PASSTHROUGH; // TODO: temporary
 
     public static final Map<ResourceLocation, Integer> DEFAULT_TABLE = Map.ofEntries(
             // Do not mess with creative light blocks. They would be pointless otherwise.
@@ -21,9 +21,13 @@ public final class DefaultLevels {
             entry("magma_block", PASSTHROUGH),
             entry("candle_cake", PASSTHROUGH), // TODO: colours
             entry("firefly_bush", PASSTHROUGH), // TODO: colours
+            entry("powergrid:light_fixture", PASSTHROUGH),
+            entry("createaddition:small_light_connector", PASSTHROUGH),
             entry("torch", 12),
+            entry("hardcore_torches:lit_torch", 12),
             entry("copper_torch", 12),
             entry("lantern", 12),
+            entry("hardcore_torches:lit_lantern", 12),
             entry("campfire", 12),
             entry("fire", 10),
             entry("furnace", 10),
@@ -34,8 +38,12 @@ public final class DefaultLevels {
             entry("ochre_froglight", 8),
             entry("lava", 8),
             entry("cauldron", 8),
+            entry("soul_torch", 6),
+            entry("hardcore_torches:lit_soul_torch", 6),
             entry("soul_fire", 6),
             entry("soul_campfire", 6),
+            entry("soul_lantern", 6),
+            entry("hardcore_torches:lit_soul_lantern", 6),
             entry("respawn_anchor", 6),
             entry("sea_lantern", 5),
             entry("sea_pickle", 5),
