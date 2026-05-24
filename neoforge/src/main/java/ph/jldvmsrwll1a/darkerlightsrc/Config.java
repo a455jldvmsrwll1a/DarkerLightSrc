@@ -5,15 +5,17 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 public final class Config {
     public static final ModConfigSpec SPEC;
+    public static final ModConfigSpec.IntValue DEFAULT_CAP;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> RULESET_OVERRIDES;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
-        builder.translation("config.darkerlightsrc.default_cap")
+        DEFAULT_CAP = builder.translation("config.darkerlightsrc.default_cap")
                 .comment("The default limit to apply to blocks not covered by the ruleset.")
                 .worldRestart()
                 .defineInRange("default_cap", 8, 0, 15);
 
-        builder.translation("config.darkerlightsrc.ruleset_overrides")
+        RULESET_OVERRIDES = builder.translation("config.darkerlightsrc.ruleset_overrides")
                 .comment("A list of overrides to apply to the built-in ruleset.")
                 .worldRestart()
                 .defineListAllowEmpty("ruleset_overrides", List.of(), Config::checkIfRuleStringValid);

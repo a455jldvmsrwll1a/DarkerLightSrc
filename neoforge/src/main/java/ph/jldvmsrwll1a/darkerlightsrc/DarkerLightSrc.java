@@ -17,6 +17,13 @@ public class DarkerLightSrc {
     }
 
     private static void onTagsUpdated(TagsUpdatedEvent event) {
-        DarkerLightSrcCore.setTable(new BlockLightLevels.Builder().useBuiltin().build());
+        BlockLightLevels.Builder builder = new BlockLightLevels.Builder().useBuiltin().defaultCap(Config.DEFAULT_CAP.getAsInt());
+
+        int i = 1;
+        for (String override : Config.RULESET_OVERRIDES.get()) {
+            builder.addRule(override, i++);
+        }
+
+        DarkerLightSrcCore.setTable(builder.build());
     }
 }
