@@ -17,7 +17,8 @@ public class DarkerLightSrc {
     }
 
     private static void onTagsUpdated(TagsUpdatedEvent event) {
-        BlockLightLevels.Builder builder = new BlockLightLevels.Builder().useBuiltin().defaultCap(Config.DEFAULT_CAP.getAsInt());
+        BlockLightLevels.Builder builder =
+                new BlockLightLevels.Builder().useBuiltin().defaultCap(Config.DEFAULT_CAP.getAsInt());
 
         int i = 1;
         for (String override : Config.RULESET_OVERRIDES.get()) {
