@@ -1,6 +1,7 @@
 package ph.jldvmsrwll1a.darkerlightsrc;
 
 import java.util.List;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public final class Config {
@@ -26,8 +27,34 @@ public final class Config {
             return false;
         }
 
-        // TODO: check that only valid characters are present.
+        String[] tokens = str.strip().split("\\s+");
 
-        return !str.isBlank();
+        if (tokens.length < 1 || tokens.length > 2) {
+            return false;
+        }
+
+        if (tokens[0].startsWith("#")) {
+            if (ResourceLocation.tryParse(tokens[0].substring(1)) == null) {
+                return false;
+            }
+        } else {
+            if (ResourceLocation.tryParse(tokens[0]) == null) {
+                return false;
+            }
+        }
+
+        if (tokens.length == 2) {
+            int parsedValue;
+
+            try {
+                parsedValue = Integer.parseInt(tokens[1]);
+            } catch (NumberFormatException ignored) {
+                return false;
+            }
+
+            return parsedValue >= 0 && parsedValue <= 15;
+        }
+
+        return true;
     }
 }
