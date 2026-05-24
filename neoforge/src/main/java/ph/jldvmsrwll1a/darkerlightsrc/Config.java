@@ -12,12 +12,10 @@ public final class Config {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
         DEFAULT_CAP = builder.translation("config.darkerlightsrc.default_cap")
                 .comment("The default limit to apply to blocks not covered by the ruleset.")
-                .worldRestart()
                 .defineInRange("default_cap", 8, 0, 15);
 
         RULESET_OVERRIDES = builder.translation("config.darkerlightsrc.ruleset_overrides")
                 .comment("A list of overrides to apply to the built-in ruleset.")
-                .worldRestart()
                 .defineListAllowEmpty("ruleset_overrides", List.of(), Config::checkIfRuleStringValid);
 
         SPEC = builder.build();
