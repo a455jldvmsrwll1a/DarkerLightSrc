@@ -1,14 +1,12 @@
 package ph.jldvmsrwll1a.darkerlightsrc;
 
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.Items;
-import ph.jldvmsrwll1a.darkerlightsrc.platform.Services;
-
 public final class DarkerLightSrcCore {
 
-    public static BlockLightLevels BLOCK_LIGHT_LEVELS;
+    public static BlockLightLevels BLOCK_LIGHT_LEVELS = null;
 
-    public static void init() {
-        BLOCK_LIGHT_LEVELS = new BlockLightLevels();
+    public static void setTable(BlockLightLevels table) {
+        BLOCK_LIGHT_LEVELS = table;
+
+        Constants.LOG.info("Initialised block light table with {} rules.", table.tableSize());
     }
 }

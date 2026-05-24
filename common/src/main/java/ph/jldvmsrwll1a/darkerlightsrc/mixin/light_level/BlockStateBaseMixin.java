@@ -11,12 +11,12 @@ public abstract class BlockStateBaseMixin {
 
     @ModifyReturnValue(method = "getLightEmission", at = @At("RETURN"))
     private int modifyEmissionValue(int original) {
-        if (original == 0) {
+        if (original == 0 || DarkerLightSrcCore.BLOCK_LIGHT_LEVELS == null) {
             return original;
         }
 
         BlockBehaviour.BlockStateBase state = (BlockBehaviour.BlockStateBase) (Object) this;
-        int level = DarkerLightSrcCore.BLOCK_LIGHT_LEVELS.getLightCap(state);
+        int level = DarkerLightSrcCore.BLOCK_LIGHT_LEVELS.getLightCap(state.getBlock());
 
         return Math.min(original, level);
     }

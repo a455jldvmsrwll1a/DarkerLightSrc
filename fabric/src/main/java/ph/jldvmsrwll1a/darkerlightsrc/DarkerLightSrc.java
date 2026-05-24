@@ -1,18 +1,15 @@
 package ph.jldvmsrwll1a.darkerlightsrc;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.CommonLifecycleEvents;
 
 public class DarkerLightSrc implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
-        // This method is invoked by the Fabric mod loader when it is ready
-        // to load your mod. You can access Fabric and Common code in this
-        // project.
-
-        // Use Fabric to bootstrap the Common mod.
         Constants.LOG.info("Hello world! DarkerLightSrc (Fabric)");
-        DarkerLightSrcCore.init();
+
+        CommonLifecycleEvents.TAGS_LOADED.register((a, b) -> DarkerLightSrcCore.setTable(
+                new BlockLightLevels.Builder().useBuiltin().build()));
     }
 }
